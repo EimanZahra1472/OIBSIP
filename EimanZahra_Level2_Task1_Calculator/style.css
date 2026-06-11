@@ -1,0 +1,200 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.container {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.calculator {
+    background: #1a1a2e;
+    border-radius: 2rem;
+    padding: 1.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.calculator:hover {
+    transform: translateY(-5px);
+}
+
+/* Display Screen */
+.display {
+    background: #0f0f1a;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: right;
+    word-wrap: break-word;
+    word-break: break-all;
+    min-height: 120px;
+}
+
+.previous-operand {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    min-height: 2rem;
+}
+
+.current-operand {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 600;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.current-operand::-webkit-scrollbar {
+    height: 4px;
+}
+
+.current-operand::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.current-operand::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+/* Buttons Grid */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+}
+
+.btn {
+    padding: 1.25rem 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* Number Buttons */
+.btn-number {
+    background: #2d2d44;
+    color: white;
+}
+
+.btn-number:hover {
+    background: #3d3d5c;
+}
+
+/* Operator Buttons */
+.btn-operator {
+    background: #ff6b6b;
+    color: white;
+}
+
+.btn-operator:hover {
+    background: #ff5252;
+}
+
+/* Function Buttons (AC, ⌫, %) */
+.btn-function {
+    background: #4a4a6a;
+    color: white;
+}
+
+.btn-function:hover {
+    background: #5a5a7a;
+}
+
+/* Equals Button */
+.btn-equals {
+    background: #4ecdc4;
+    color: #1a1a2e;
+    grid-column: span 1;
+}
+
+.btn-equals:hover {
+    background: #45b7b0;
+}
+
+/* Zero Button */
+.zero {
+    grid-column: span 1;
+}
+
+/* Button States */
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(78, 205, 196, 0.5);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75rem;
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+    .container {
+        padding: 0;
+    }
+    
+    .calculator {
+        padding: 1rem;
+    }
+    
+    .display {
+        padding: 1rem;
+        min-height: 100px;
+    }
+    
+    .current-operand {
+        font-size: 2rem;
+    }
+    
+    .previous-operand {
+        font-size: 1rem;
+    }
+    
+    .btn {
+        padding: 1rem 0;
+        font-size: 1rem;
+    }
+    
+    .buttons {
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .btn {
+        padding: 0.75rem 0;
+        font-size: 0.9rem;
+    }
+    
+    .current-operand {
+        font-size: 1.5rem;
+    }
+}
