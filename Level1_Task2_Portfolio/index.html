@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eiman Zahra | AI/ML Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #f8fafc;
+        }
+
+        /* CSS Custom Properties */
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --secondary: #0ea5e9;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --bg-light: #f1f5f9;
+            --white: #ffffff;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 4rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text .highlight {
+            color: #fbbf24;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .hero-image .placeholder {
+            width: 280px;
+            height: 280px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-size: 6rem;
+            border: 4px solid rgba(255,255,255,0.3);
+        }
+
+        .contact-info {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .contact-info a:hover {
+            opacity: 1;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-dark {
+            background: var(--bg-light);
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark);
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            background: var(--bg-light);
+            padding: 0.4rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .project-tech span {
+            background: var(--bg-light);
+            padding: 0.2rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .project-desc {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Experience Section */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .exp-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary);
+        }
+
+        .exp-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .exp-company {
+            color: var(--primary);
+            font-weight: 600;
+            margin: 0.25rem 0;
+        }
+
+        .exp-date {
+            color: var(--gray);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .exp-desc {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Education */
+        .education-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .education-card h3 {
+            font-size: 1.3rem;
+            color: var(--dark);
+        }
+
+        .education-card .uni {
+            color: var(--primary);
+            font-weight: 600;
+            margin: 0.5rem 0;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-info-box {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info-box a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--gray);
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .contact-info {
+                justify-content: center;
+            }
+
+            .nav-container {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Eiman Zahra</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Hi, I'm <span class="highlight">Eiman Zahra</span></h1>
+                    <p>BS Artificial Intelligence @ NUST | ML Engineer | Full-Stack & App Developer</p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn-primary">View My Work</a>
+                        <a href="#contact" class="btn-outline" style="border-color:white; color:white;">Contact Me</a>
+                    </div>
+                    <div class="contact-info">
+                        <span>📧 eimanzahra456@gmail.com</span>
+                        <span>📞 +92 311 0548391</span>
+                        <span>📍 Rawalpindi, Pakistan</span>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="placeholder">
+                        👩‍💻
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Technical <span>Skills</span></h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>💻 Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>🤖 ML/AI</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">Logistic Regression</span>
+                        <span class="skill-tag">Naive Bayes</span>
+                        <span class="skill-tag">NumPy/Pandas</span>
+                        <span class="skill-tag">HuggingFace</span>
+                        <span class="skill-tag">Groq API</span>
+                        <span class="skill-tag">FastAPI</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>🖥️ Frontend</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">React.js</span>
+                        <span class="skill-tag">React Native</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>⚙️ Backend & Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Node.js/Express</span>
+                        <span class="skill-tag">MongoDB/MySQL</span>
+                        <span class="skill-tag">Git/GitHub</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">Postman</span>
+                        <span class="skill-tag">Figma</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Featured <span>Projects</span></h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">IntelliMart E-Commerce Platform</h3>
+                        <div class="project-tech">
+                            <span>MERN</span>
+                            <span>Python</span>
+                            <span>Scikit-learn</span>
+                            <span>Logistic Regression</span>
+                        </div>
+                        <p class="project-desc">Full-stack e-commerce platform with ML product classifier achieving 89.54% accuracy. Built REST APIs for product management and user authentication.</p>
+                        <a href="#" class="project-link">View on GitHub →</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Sentiment Analysis Web App</h3>
+                        <div class="project-tech">
+                            <span>FastAPI</span>
+                            <span>BERT</span>
+                            <span>Groq LLaMA3</span>
+                            <span>Scikit-learn</span>
+                        </div>
+                        <p class="project-desc">Three-model sentiment analysis comparing classical ML, transformer-based BERT, and LLM-powered Groq LLaMA3 with side-by-side interface.</p>
+                        <a href="#" class="project-link">View on GitHub →</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Real-Time Messaging App</h3>
+                        <div class="project-tech">
+                            <span>MERN</span>
+                            <span>Socket.io</span>
+                            <span>WebRTC</span>
+                        </div>
+                        <p class="project-desc">WhatsApp-style app with real-time messaging, voice/video calls, and online presence indicators using WebSocket communication.</p>
+                        <a href="#" class="project-link">View on GitHub →</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Hostel Management System</h3>
+                        <div class="project-tech">
+                            <span>Node.js</span>
+                            <span>Express</span>
+                            <span>SQL</span>
+                        </div>
+                        <p class="project-desc">Full-stack system for leave requests, mess management, room allocation, and complaint tracking with student/admin dashboards.</p>
+                        <a href="#" class="project-link">View on GitHub →</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Remote Health Monitoring</h3>
+                        <div class="project-tech">
+                            <span>C++</span>
+                            <span>OOP</span>
+                            <span>Data Structures</span>
+                        </div>
+                        <p class="project-desc">Health monitoring system using OOP principles for patient records, device sensors, and automated health status reports.</p>
+                        <a href="#" class="project-link">View on GitHub →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Work <span>Experience</span></h2>
+            <div class="experience-grid">
+                <div class="exp-card">
+                    <div class="exp-title">App Development Intern</div>
+                    <div class="exp-company">Sines, NUST, Pakistan (Murrabi)</div>
+                    <div class="exp-date">06/2025 - 08/2025</div>
+                    <div class="exp-desc">Designed app UI in Figma, developed React Native frontend with Node.js backend, integrated AI model for real-time feedback on children's pronunciation and hand gestures.</div>
+                </div>
+                <div class="exp-card">
+                    <div class="exp-title">Machine Learning Engineer Intern</div>
+                    <div class="exp-company">FlyRank AI</div>
+                    <div class="exp-date">Present</div>
+                    <div class="exp-desc">Working on real-world machine learning projects as part of the ML engineering track using Python and Scikit-learn.</div>
+                </div>
+                <div class="exp-card">
+                    <div class="exp-title">AI Technical Content Writer</div>
+                    <div class="exp-company">GAO TEKUSA</div>
+                    <div class="exp-date">Present</div>
+                    <div class="exp-desc">Researching and documenting AI/ML concepts, tools, and workflows. Analyzing LLMs, agents, and ML pipelines for technical audiences.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Certifications -->
+    <section class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Education & <span>Certifications</span></h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div class="education-card">
+                    <h3>🎓 BS Artificial Intelligence</h3>
+                    <div class="uni">National University of Sciences & Technology (NUST)</div>
+                    <p>2024 - Present | Islamabad, Pakistan</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--gray);">Third-year student specializing in Machine Learning, Full-Stack & App Development</p>
+                </div>
+                <div class="education-card">
+                    <h3>📜 Certifications</h3>
+                    <div style="text-align: left; margin-top: 1rem;">
+                        <p><strong>• Machine Learning Specialization</strong> - Andrew Ng (In Progress)</p>
+                        <p><strong>• CS50's Python</strong> - Harvard University</p>
+                        <p><strong>• CS50's Web Programming with JS</strong> - Harvard University</p>
+                        <p><strong>• Kaggle Learn</strong> - Python, ML, Data Visualization</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Get In <span>Touch</span></h2>
+            <div class="contact-content">
+                <div class="contact-info-box">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <p><a href="mailto:eimanzahra456@gmail.com">eimanzahra456@gmail.com</a></p>
+                </div>
+                <div class="contact-info-box">
+                    <div class="contact-icon">📱</div>
+                    <h3>Phone</h3>
+                    <p>+92 311 0548391</p>
+                </div>
+                <div class="contact-info-box">
+                    <div class="contact-icon">📍</div>
+                    <h3>Location</h3>
+                    <p>Rawalpindi, Pakistan</p>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/eiman-zahra" target="_blank">🔗 LinkedIn</a>
+                <a href="https://github.com/EimanZahra1472" target="_blank">🐙 GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Eiman Zahra. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">BS AI @ NUST | ML Engineer | Full-Stack Developer</p>
+    </footer>
+</body>
+</html>
