@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter | Celsius · Fahrenheit · Kelvin</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="converter-card">
+            <h1>🌡️ Temperature Converter</h1>
+            <div class="subtitle">Convert between Celsius, Fahrenheit & Kelvin</div>
+
+            <!-- Input Value -->
+            <div class="input-group">
+                <label>Enter Temperature</label>
+                <div class="input-wrapper">
+                    <input type="number" id="inputValue" placeholder="0" step="any" value="0">
+                    <span class="unit-badge" id="inputUnitBadge">°C</span>
+                </div>
+            </div>
+
+            <!-- From / To Selection -->
+            <div class="conversion-row">
+                <div class="select-group">
+                    <label>FROM</label>
+                    <select id="fromUnit">
+                        <option value="celsius">Celsius (°C)</option>
+                        <option value="fahrenheit">Fahrenheit (°F)</option>
+                        <option value="kelvin">Kelvin (K)</option>
+                    </select>
+                </div>
+                <div class="swap-icon" id="swapBtn">↔️</div>
+                <div class="select-group">
+                    <label>TO</label>
+                    <select id="toUnit">
+                        <option value="fahrenheit">Fahrenheit (°F)</option>
+                        <option value="celsius">Celsius (°C)</option>
+                        <option value="kelvin">Kelvin (K)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Convert Button -->
+            <button class="convert-btn" id="convertBtn">Convert Temperature →</button>
+
+            <!-- Result -->
+            <div class="result-section">
+                <div class="result-label">Converted Temperature</div>
+                <div>
+                    <span class="result-value" id="resultValue">32</span>
+                    <span class="result-unit" id="resultUnit">°F</span>
+                </div>
+                <div class="error-message" id="errorMsg">❌ Please enter a valid number</div>
+            </div>
+
+            <!-- Quick Reference Formulas -->
+            <div class="quick-ref">
+                <h4>📐 Conversion Formulas</h4>
+                <div class="formula-grid">
+                    <div class="formula-item"><strong>°C → °F</strong><br>°F = (°C × 9/5) + 32</div>
+                    <div class="formula-item"><strong>°F → °C</strong><br>°C = (°F − 32) × 5/9</div>
+                    <div class="formula-item"><strong>°C → K</strong><br>K = °C + 273.15</div>
+                    <div class="formula-item"><strong>K → °C</strong><br>°C = K − 273.15</div>
+                    <div class="formula-item"><strong>°F → K</strong><br>K = (°F − 32) × 5/9 + 273.15</div>
+                    <div class="formula-item"><strong>K → °F</strong><br>°F = (K − 273.15) × 9/5 + 32</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
