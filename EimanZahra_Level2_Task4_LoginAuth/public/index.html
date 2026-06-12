@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureAuth | Login System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="landing-container">
+        <nav class="landing-nav">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>SecureAuth</span>
+            </div>
+            <div class="nav-buttons">
+                <a href="login.html" class="btn-outline">Login</a>
+                <a href="register.html" class="btn-primary">Register</a>
+            </div>
+        </nav>
+
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1>Secure <span class="gradient">Authentication</span> System</h1>
+                <p>Complete login system with registration, JWT tokens, bcrypt password hashing, and protected routes. Built with Node.js, Express, MongoDB, and modern web technologies.</p>
+                
+                <div class="feature-grid">
+                    <div class="feature">
+                        <i class="fas fa-user-plus"></i>
+                        <h3>User Registration</h3>
+                        <p>Create new accounts with validation</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <h3>Secure Login</h3>
+                        <p>JWT-based authentication</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-lock"></i>
+                        <h3>Protected Routes</h3>
+                        <p>Authenticated-only access</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-database"></i>
+                        <h3>MongoDB Storage</h3>
+                        <p>Secure data persistence</p>
+                    </div>
+                </div>
+
+                <div class="cta-buttons">
+                    <a href="register.html" class="btn-large-primary">Get Started →</a>
+                    <a href="login.html" class="btn-large-outline">Sign In</a>
+                </div>
+            </div>
+        </div>
+
+        <footer class="landing-footer">
+            <p>© 2024 SecureAuth. All rights reserved. | Secure Authentication System</p>
+        </footer>
+    </div>
+
+    <script>
+        // Check if user is already logged in
+        const token = localStorage.getItem('authToken');
+        if (token) {
+            // Verify token with server
+            fetch('/api/auth/me', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    // Redirect to dashboard
+                    window.location.href = '/dashboard';
+                }
+            })
+            .catch(() => {
+                // Token invalid, clear it
+                localStorage.removeItem('authToken');
+            });
+        }
+    </script>
+</body>
+</html>

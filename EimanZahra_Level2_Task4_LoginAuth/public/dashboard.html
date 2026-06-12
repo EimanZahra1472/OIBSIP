@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | SecureAuth</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="dashboard-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>SecureAuth</span>
+            </div>
+            <div class="user-info">
+                <span id="userName">Loading...</span>
+                <button id="logoutBtn" class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Welcome, <span id="welcomeName">User</span>!</h1>
+            <p>This is a secured page. Only authenticated users can access this content.</p>
+        </div>
+
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <i class="fas fa-user-circle"></i>
+                <div>
+                    <h3>Account Info</h3>
+                    <p id="userEmail">-</p>
+                    <p id="memberSince">-</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-calendar-alt"></i>
+                <div>
+                    <h3>Member For</h3>
+                    <p id="accountAge">-</p>
+                    <p id="lastLogin">-</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-shield-alt"></i>
+                <div>
+                    <h3>Security Status</h3>
+                    <p id="securityStatus">Authenticated</p>
+                    <p>JWT Protected</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-info">
+            <div class="info-card">
+                <h3><i class="fas fa-lock"></i> Secured Content</h3>
+                <p>You have successfully authenticated! This page is protected by JWT authentication middleware. Only users with a valid token can access this page.</p>
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-database"></i> Your Data</h3>
+                <p>Your information is securely stored in MongoDB with bcrypt password hashing. All sensitive data is encrypted.</p>
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-clock"></i> Session Info</h3>
+                <p id="sessionInfo">Loading session information...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
